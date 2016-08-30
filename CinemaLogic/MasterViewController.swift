@@ -12,11 +12,29 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    let group1 = ["Игра","Cтатистика","Достижения"]
-    let group2 = ["Помощь","Оценить"]
-        
+    var menus = [Menu]()
+    
+    func loadMenu() {
+        let label01 = UIImage(named: "01")!
+        let position1 = Menu(name: "Игра", photo: label01)!
+    
+        let label02 = UIImage(named: "02")!
+        let position2 = Menu(name: "Cтатистика", photo: label02)!
+    
+        let label03 = UIImage(named: "03")!
+        let position3 = Menu(name: "Достижения", photo: label03)!
+    
+        let label04 = UIImage(named: "04")!
+        let position4 = Menu(name: "Помощь", photo: label04)!
+    
+        let label05 = UIImage(named: "05")!
+        let position5 = Menu(name: "Оценить", photo: label05)!
+    
+        menus += [position1, position2, position3, position4, position5]
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadMenu()
         // Do any additional setup after loading the view, typically from a nib.
         
         //добавляет конопочку Edit слева вверху
@@ -65,8 +83,8 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(section) {
-        case 0: return group1.count  // section 0 has 3 rows
-        case 1: return group2.count  // section 1 has 2 row
+        case 0: return 3  // section 0 has 3 rows
+        case 1: return 2  // section 1 has 2 row
         default: fatalError("Unknown number of sections")
         }
     }
@@ -78,14 +96,19 @@ class MasterViewController: UITableViewController {
         case 0:
             switch(indexPath.row) {
             case 0: cell.nameLabel.text = group1[indexPath.row]
+                    cell.imageCell.image = menus[indexPath.row].photo
             case 1: cell.nameLabel.text = group1[indexPath.row]
+                    cell.imageCell.image = menus[indexPath.row].photo
             case 2: cell.nameLabel.text = group1[indexPath.row]
+                    cell.imageCell.image = menus[indexPath.row].photo
             default: break
             }
         case 1:
             switch(indexPath.row) {
             case 0: cell.nameLabel.text = group2[indexPath.row]
+                    cell.imageCell.image = menus[indexPath.row].photo
             case 1: cell.nameLabel.text = group2[indexPath.row]
+                    cell.imageCell.image = menus[indexPath.row].photo
             default: break
             }
         default: fatalError("Unknown section")
