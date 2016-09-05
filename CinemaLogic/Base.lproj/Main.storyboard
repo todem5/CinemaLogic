@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -32,25 +32,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
-                                <rect key="frame" x="20" y="292" width="560" height="17"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xbs-Ka-amg">
+                                <rect key="frame" x="225" y="280" width="151" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="151" id="G6z-00-BTi"/>
+                                    <constraint firstAttribute="height" constant="40" id="irl-EO-iSM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L1l-fU-UNJ">
+                                <rect key="frame" x="195" y="64" width="210" height="210"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="8TW-Tc-xjE"/>
+                                    <constraint firstAttribute="height" constant="210" id="k5l-Zz-wBs"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" symbolic="YES" id="Tsc-yG-G1q"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="jWN-iV-94e"/>
-                            <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="20" symbolic="YES" id="tHV-ZD-HQj"/>
+                            <constraint firstItem="L1l-fU-UNJ" firstAttribute="centerX" secondItem="Xbs-Ka-amg" secondAttribute="centerX" id="1sb-g0-gO1"/>
+                            <constraint firstItem="Xbs-Ka-amg" firstAttribute="top" secondItem="L1l-fU-UNJ" secondAttribute="bottom" constant="6" id="Ofa-fy-Wbt"/>
+                            <constraint firstItem="Xbs-Ka-amg" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="216" id="Roy-ZY-iU4"/>
+                            <constraint firstItem="L1l-fU-UNJ" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="Srm-Fd-KQf"/>
+                            <constraint firstItem="L1l-fU-UNJ" firstAttribute="centerX" secondItem="svH-Pt-448" secondAttribute="centerX" id="v29-72-QCr"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Словополис" id="mOI-FS-AaM"/>
                     <connections>
-                        <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
+                        <outlet property="detailLabel" destination="Xbs-Ka-amg" id="Fw9-2k-VNh"/>
+                        <outlet property="imgL" destination="L1l-fU-UNJ" id="YkO-VO-gqN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
@@ -102,7 +115,7 @@
                                 <connections>
                                     <outlet property="imageCell" destination="FXf-jL-XsT" id="DKD-9n-pkz"/>
                                     <outlet property="nameLabel" destination="loM-xC-t8w" id="qE3-Jc-hwh"/>
-                                    <segue destination="vC3-pB-5Vb" kind="showDetail" id="yqc-sC-Y16"/>
+                                    <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="firstDetail" id="qvW-RN-JcS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -135,6 +148,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yqc-sC-Y16"/>
+        <segue reference="qvW-RN-JcS"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,10 +8,18 @@
 
 import UIKit
 
+//protocol SettingsViewControllerDelegate {
+//    func getData(lText: String)
+//}
+
 class DetailViewController: UIViewController {
+    
+    var textL = ""
+    var pictLabel: UIImage?
+    //var delegate: DetailViewControllerDelegate?
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var imgL: UIImageView!
 
     var detailItem: AnyObject? {
         didSet {
@@ -22,11 +30,12 @@ class DetailViewController: UIViewController {
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.valueForKey("timeStamp")!.description
+        //if let detail = self.detailItem {
+            if let label = self.detailLabel {
+                label.text = textL
+                imgL.image = pictLabel
             }
-        }
+        //}
     }
 
     override func viewDidLoad() {

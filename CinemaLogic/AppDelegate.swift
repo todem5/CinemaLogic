@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
         splitViewController.delegate = self
         splitViewController.preferredDisplayMode = .AllVisible
-        splitViewController.minimumPrimaryColumnWidth = 50.0
+        splitViewController.maximumPrimaryColumnWidth = 250
+        //(max) / 2)*0.7 - найти функции которая дает максимальную ширину экрана
         
         let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
         let controller = masterNavigationController.topViewController as! MasterViewController

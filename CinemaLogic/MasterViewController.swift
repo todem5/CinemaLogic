@@ -56,22 +56,23 @@ class MasterViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "preShow" {
-            // это будет нужно выделении строчек
-            //if let indexPath = self.tableView.indexPathForSelectedRow {
-            //let object = self.fetchedResultsController.objectAtIndexPath(indexPath)
-                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-                //controller.detailItem = object
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
-            //}
+        if segue.identifier == "firstDetail" {
+            
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+            let nav = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+                //let destinationVC = nav.topViewController as! MasterViewController
+                //nav.delegate = self
+                nav.textL = menus[indexPath.row].name
+                nav.pictLabel = menus[indexPath.row].photo
+                nav.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                nav.navigationItem.leftItemsSupplementBackButton = true
+            }
         }
     }
 
@@ -95,19 +96,19 @@ class MasterViewController: UITableViewController {
         switch(indexPath.section) {
         case 0:
             switch(indexPath.row) {
-            case 0: cell.nameLabel.text = group1[indexPath.row]
+            case 0: cell.nameLabel.text = menus[indexPath.row].name
                     cell.imageCell.image = menus[indexPath.row].photo
-            case 1: cell.nameLabel.text = group1[indexPath.row]
+            case 1: cell.nameLabel.text = menus[indexPath.row].name
                     cell.imageCell.image = menus[indexPath.row].photo
-            case 2: cell.nameLabel.text = group1[indexPath.row]
+            case 2: cell.nameLabel.text = menus[indexPath.row].name
                     cell.imageCell.image = menus[indexPath.row].photo
             default: break
             }
-        case 1:
+        case 1: 
             switch(indexPath.row) {
-            case 0: cell.nameLabel.text = group2[indexPath.row]
+            case 0: cell.nameLabel.text = menus[indexPath.row].name
                     cell.imageCell.image = menus[indexPath.row].photo
-            case 1: cell.nameLabel.text = group2[indexPath.row]
+            case 1: cell.nameLabel.text = menus[indexPath.row].name
                     cell.imageCell.image = menus[indexPath.row].photo
             default: break
             }
@@ -132,11 +133,7 @@ class MasterViewController: UITableViewController {
     
 
     // MARK: - Fetched results controller
-
-    
     /*
-     // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
-     
      func controllerDidChangeContent(controller: NSFetchedResultsController) {
          // In the simplest, most efficient, case, reload the table view.
          self.tableView.reloadData()
